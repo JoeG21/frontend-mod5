@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
-import OppCard from './OppCard'
+import SideBar from './SideBar'
+import Content from './Content'
 
 class OppContainer extends Component {
 
     state = {
-        opps: []
+        opps: [],
+        shelters: [],
+        selShelter: null
     }
 
     componentDidMount () {
+        this.getShelters()
+        this.getOpps()
+    }
+
+   getShelters = () => {
+        fetch('http://localhost:3000/shelters')
+        .then(res => res.json())
+        .then(shelters => this.setState({
+            ...this.state,
+            shelters: shelters
+        }))
+    }
+
+    getOpps = () => {
         fetch('http://localhost:3000/opps')
         .then(res => res.json())
-        .then(opps => this.setState({
+        .then(opps=> this.setState({
+            ...this.state,
             opps: opps
         }))
     }
 
+    selShelter = (props) => {
+        this.setState({
+            selShelter: props
+        })
+    }
 
 
     render() {
         return (
             <div className='opp-con'>
-                {
-                    this.state.opps.map(opp => <OppCard opp={opp} key={opp.id} />)
-                }
+                <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
+                <Content opps={this.state.opps} selShelter={this.state.selShelter} />
             </div>
         )
     }

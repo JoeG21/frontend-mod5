@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,9 +35,18 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .opp-card{
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+
+  background: #b6b5b5;
+}
+
+.shelter-opp{
   margin: 10px;
   height: 200px;
   width: 200px;

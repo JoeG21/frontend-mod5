@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Header from './Header';
 import OppContainer from './OppContainer';
+
 
 import Login from '../components/auth/Login'
 import SignUp from '../components/auth/SignUp'
@@ -30,14 +32,53 @@ class App extends Component {
     }
   }
 
+  failedLogin = () =>{
+    localStorage.clear()
+    this.setState({
+      isLoggedin: false
+    }, () =>{
+      return <Redirect push to="/login" />
+    })
+  }
+
+
   render() {
     return (
       <div className="parent">
         <BrowserRouter>
+          <Header isLoggedIn={this.state.isLoggedIn} />
 
-          <div className='app'> 
-            <OppContainer />
-          </div>`
+          <Switch>
+
+          <Route exact path="/" component={() => {
+              if(localStorage.getItem('auth_key')){
+                return <OppContainer />
+                // return <Route path='/homepage' component={OppContainer} />
+              }else{
+                // return <Redirect to='/' />
+                return <Redirect to='/login' />
+              }
+            }} />
+            
+              <Route path="/login" component={() => {
+              return <Login failedLogin={this.failedLogin} handleLogin={this.handleLogin} />
+            }} />
+
+              <Route path='/signup' component={SignUp} />
+
+              <Route path='/logout' component={() => {
+              localStorage.clear()
+              this.setState({ isLoggedIn: false })
+              return <Redirect to='/login' />
+            }} />
+            
+            
+            <Route>
+              {/* <Redirect to='/homepage' /> */}
+              <Redirect to='/' />
+            </Route>
+
+          </Switch>
 
         </BrowserRouter>
       </div>
