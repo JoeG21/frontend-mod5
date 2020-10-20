@@ -30,10 +30,10 @@ class Login extends React.Component {
       body: JSON.stringify(newUser)
     }).then(res => res.json())
     .then(token => {
-
+      console.log(token)
         if (token.auth_key){
             localStorage.setItem('auth_key',token['auth_key'])
-            localStorage.setItem('user_id', token.user_id)
+            localStorage.setItem('user_id', token['user_id'])
             this.props.handleLogin()
             this.props.history.push('/user')
         }else{

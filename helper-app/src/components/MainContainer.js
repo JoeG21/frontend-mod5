@@ -7,14 +7,16 @@ class OppContainer extends Component {
     state = {
         opps: [],
         shelters: [],
-        selShelter: null
+        userOpps: [],
+        selShelter: null,
+        selShelterOpps: []
     }
 
     componentDidMount () {
         this.getShelters()
         this.getOpps()
-    }
-
+    } 
+ 
    getShelters = () => {
         fetch('http://localhost:3000/shelters')
         .then(res => res.json())
@@ -27,24 +29,37 @@ class OppContainer extends Component {
     getOpps = () => {
         fetch('http://localhost:3000/opps')
         .then(res => res.json())
+        // .then(res => console.log(res))
         .then(opps=> this.setState({
             ...this.state,
             opps: opps
         }))
     }
 
-    selShelter = (props) => {
+    selShelter = (shelter) => {
+        let findOpp = []
+        this.state.opps.map(opp => { 
+            if (opp.shelter_id === shelter.id) {
+                findOpp.push(opp)
+                console.log(findOpp)
+            }
+        })
+
         this.setState({
-            selShelter: props
+            selShelter: shelter,
+            selShelterOpps: findOpp
         })
     }
 
-
+    // selShelterOpps = () => {
+    //     fetch
+    // }
+ 
     render() {
         return (
             <div className='opp-con'>
                 <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
-                <Content opps={this.state.opps} selShelter={this.state.selShelter} />
+                <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps}/>
             </div>
         )
     }

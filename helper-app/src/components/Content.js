@@ -3,12 +3,15 @@ import OppList from './OppList'
 import ShelterOpp from './ShelterOpp'
 
 const Content = (props) => {
+
+    // console.log(props.opps)
     return (
       <div className='content'>
         {
             props.selShelter !== null ? 
                 <ShelterOpp 
-                selShelter={props.selShelter} /> 
+                selShelter={props.selShelter} selShelterOpps={props.selShelterOpps} />
+              
             : 
                 <OppList opps={props.opps} />
         }

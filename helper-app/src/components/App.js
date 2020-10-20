@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Header from './Header';
-import OppContainer from './OppContainer';
+import MainContainer from './MainContainer';
+import Welcome from './Welcome';
 
 
 import Login from '../components/auth/Login'
@@ -13,6 +14,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -52,11 +54,12 @@ class App extends Component {
 
           <Route exact path="/" component={() => {
               if(localStorage.getItem('auth_key')){
-                return <OppContainer />
+                return <MainContainer />
                 // return <Route path='/homepage' component={OppContainer} />
               }else{
                 // return <Redirect to='/' />
-                return <Redirect to='/login' />
+                // return <Redirect to='/login' />
+                return <Route to='/welcome' component={Welcome} />
               }
             }} />
             

@@ -1,28 +1,78 @@
 import React from 'react';
  
-const OppCard = (props) => {
+class OppCard extends React.Component {
 
-    return (
-        <div className='opp-card'>
+    state = {
+        clicked: false
+    }
 
-            <div className='opp-title'>
-                Title: {props.opp.title}
+    clickedOppCard = () => {
+        this.setState(previousState => {
+            return {
+                clicked: !previousState.clicked
+            }
+        })
+    }
+
+    handleYesClick = (opp) => {
+        fetch('http://localhost:3000/user_opps',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify (
+            {
+                user_id: localStorage.user_id,
+                opp_id: opp.id
+            }
+        )
+        })
+        .then(res => res.json())
+        .then(userOpp => console.log(userOpp))
+        console.log(localStorage.user_id)
+
+    }
+
+    render () {
+      
+        let frontCard = (
+            <div className='opp-card' onClick={(this.clickedOppCard)}>
+
+                <div className='opp-title'>
+                    Title: {this.props.opp.title}
+                </div>
+
+                <div className='opp-des'>
+                    Description: {this.props.opp.des}
+                </div>
+
+                <div className='opp-date'>
+                    Date: {this.props.opp.date}
+                </div>
+
+                <div className='opp-howlong'>
+                    Length: {this.props.opp.howlong}Hr
+                </div>
+                <br></br>
             </div>
+        )
 
-            <div className='opp-des'>
-                Description: {props.opp.des}
+        let backCard = (
+            <div className='opp-card' onClick={(this.clickedOppCard)}>
+                <h5>Would you like to volunteer?</h5>
+                {/* {console.log(this.props)} */}
+                <div className='options'>
+                    <button onClick={() => this.handleYesClick(this.props.opp)}>Yes</button>    
+                    <button>No</button>   
+                </div>
             </div>
+        )
 
-            <div className='opp-date'>
-                Date: {props.opp.date}
-            </div>
+        return (
+            !this.state.clicked? frontCard : backCard
+        )
 
-            <div className='opp-howlong'>
-                Length: {props.opp.howlong}Hr
-            </div>
-            <br></br>
-        </div>
-    )
+    }
 }
 
 export default OppCard
