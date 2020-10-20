@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Welcome = (props) => {
+const Welcome = () => {
     return (
       <div className='welcome-page'>
-       <h1>Welcome</h1>
+       <h1>Welcome 2</h1>
       </div>
     );
 }
