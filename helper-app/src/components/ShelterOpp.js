@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import SelShelterOppsCard from './SelShelterOppsCard'
 
 const ShelterOpp = (props) => {
     return(
@@ -17,8 +16,9 @@ const ShelterOpp = (props) => {
                 <h5>Phone: {props.selShelter.phone}</h5>
             </div>
 
-            <div className='shelter-opp-opps'>
-                        {props.selShelterOpps.map(opp => opp.title)}
+            <div className='shelter-opps'>
+                {props.selShelterOpps.map(opp => <SelShelterOppsCard key={opp.id} opp={opp} />)}
+                        {/* {props.selShelterOpps.map(opp => opp.title)} */}
             </div>
         </div>
     )

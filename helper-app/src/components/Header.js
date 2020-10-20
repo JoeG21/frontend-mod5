@@ -6,8 +6,8 @@ const handleLoginRender = (isLoggedIn) => {
     return (
         <>
           <NavLink to='/logout'> Logout </NavLink>
-          <NavLink to='/homepage'> Home </NavLink>
-          <NavLink to='/userpage' > Profile </NavLink>
+          <NavLink to='/'> Home </NavLink>
+          <NavLink to='/userpage'> Profile </NavLink>
         </>
     )
   }else{
@@ -27,7 +27,7 @@ const Header = (props) => {
       <div className='header'> Valath </div>
       <ul>
           {/* <NavLink to='/homepage'> Home </NavLink>
-          <NavLink to='/userpage'> Your Profile </NavLink> */}
+          <NavLink to='/userpage'> Profile </NavLink>  */}
         {/* <NavLink to="/"> Home </NavLink> */}
         {/* <NavLink to="/newbook"> Add New Opportunity  </NavLink> */}
         {handleLoginRender(props.isLoggedIn)}

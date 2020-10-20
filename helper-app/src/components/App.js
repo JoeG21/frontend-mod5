@@ -3,6 +3,7 @@ import '../App.css';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import Welcome from './Welcome';
+import UserProfile from './UserProfile';
 
 
 import Login from '../components/auth/Login'
@@ -19,7 +20,8 @@ import {
 class App extends Component {
 
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    currentUser: ''
   }
 
   componentDidMount(){
@@ -43,6 +45,12 @@ class App extends Component {
     })
   }
 
+  currentUser = (current_user) => {
+    this.setState({
+      currentUser: current_user
+    })
+  }
+
 
   render() {
     return (
@@ -51,36 +59,41 @@ class App extends Component {
           <Header isLoggedIn={this.state.isLoggedIn} />
 
           <Switch>
+            <Route exact path="/" component={() => {
+                if(localStorage.getItem('auth_key')){
+                  return <MainContainer />
+                  // return <Route path='/homepage' component={OppContainer} />
+                }else{
+                  return <Redirect to='/welcome' />
+                }
+              }} />
 
-          <Route exact path="/" component={() => {
-              if(localStorage.getItem('auth_key')){
-                return <MainContainer />
-                // return <Route path='/homepage' component={OppContainer} />
-              }else{
-                // return <Redirect to='/' />
-                // return <Redirect to='/login' />
-                return <Route to='/welcome' component={Welcome} />
-              }
-            }} />
-            
+              <Route path='/welcome' >
+                <Welcome />
+              </Route >
+              
               <Route path="/login" component={() => {
-              return <Login failedLogin={this.failedLogin} handleLogin={this.handleLogin} />
-            }} />
+                return <Login currentUser={this.currentUser} failedLogin={this.failedLogin} handleLogin={this.handleLogin} />
+              }} />
 
               <Route path='/signup' component={SignUp} />
 
               <Route path='/logout' component={() => {
-              localStorage.clear()
-              this.setState({ isLoggedIn: false })
-              return <Redirect to='/login' />
-            }} />
-            
-            
+                localStorage.clear()
+                this.setState({ isLoggedIn: false })
+                  return <Redirect to='/welcome'/>
+              }} />
+
+
+
+              <Route path='/userpage' component={ () => {
+                return <UserProfile user={this.state.currentUser} />
+              }} />
+              
+              
             <Route>
-              {/* <Redirect to='/homepage' /> */}
               <Redirect to='/' />
             </Route>
-
           </Switch>
 
         </BrowserRouter>
