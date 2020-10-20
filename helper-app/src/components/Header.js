@@ -5,13 +5,13 @@ const handleLoginRender = (isLoggedIn) => {
   if(isLoggedIn){
     return (
         <>
-            <NavLink to='/logout'> Logout </NavLink>
-            <NavLink to='/homepage'> Home </NavLink>
-            <NavLink to='/userpage'> Profile </NavLink>
+          <NavLink to='/logout'> Logout </NavLink>
+          <NavLink to='/homepage'> Home </NavLink>
+          <NavLink to='/userpage' > Profile </NavLink>
         </>
     )
   }else{
-    return(
+    return (
       <>
         <NavLink to='/login'> Login </NavLink>
         <NavLink to='/signup'> Signup </NavLink>
