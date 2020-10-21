@@ -29,7 +29,6 @@ class OppContainer extends Component {
     getOpps = () => {
         fetch('http://localhost:3000/opps')
         .then(res => res.json())
-        // .then(res => console.log(res))
         .then(opps=> this.setState({
             ...this.state,
             opps: opps
@@ -57,9 +56,13 @@ class OppContainer extends Component {
  
     render() {
         return (
-            <div className='opp-con'>
+            <div className='main-container'>
+                <div className='sidebar-com'>
                 <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
+                </div>
+                <div className='selshelter-com'>
                 <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps}/>
+                </div>
             </div>
         )
     }

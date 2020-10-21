@@ -5,7 +5,7 @@ import OppCard from './OppCard'
 const OppList = (props) => {
 
     return (
-        <div className='side-bar'>
+        <div className='opp-list'>
             {props.opps.map(opp => <OppCard key={opp.id} opp={opp} />)}
         </div>
     )

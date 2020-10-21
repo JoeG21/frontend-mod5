@@ -1,6 +1,6 @@
 import React from 'react';
 import OppList from './OppList'
-import ShelterOpp from './ShelterOpp'
+import ShelterCard from './ShelterCard'
 
 const Content = (props) => {
 
@@ -9,7 +9,7 @@ const Content = (props) => {
       <div className='content'>
         {
             props.selShelter !== null ? 
-                <ShelterOpp 
+                <ShelterCard 
                 selShelter={props.selShelter} selShelterOpps={props.selShelterOpps} />
               
             : 

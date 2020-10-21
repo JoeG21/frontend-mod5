@@ -1,9 +1,14 @@
 import React from 'react';
 import SelShelterOppsCard from './SelShelterOppsCard'
 
-const ShelterOpp = (props) => {
+const ShelterCard = (props) => {
     return(
-        <div className='shelter-opp'>
+        <div className='shelter-card'>
+
+            <div >
+                <img src={props.selShelter.img} className='card-img'/>
+            </div>
+
             <div className='shelter-opp-name'>
                 <h3>{props.selShelter.name}</h3>
             </div>
@@ -18,10 +23,9 @@ const ShelterOpp = (props) => {
 
             <div className='shelter-opps'>
                 {props.selShelterOpps.map(opp => <SelShelterOppsCard key={opp.id} opp={opp} />)}
-                        {/* {props.selShelterOpps.map(opp => opp.title)} */}
             </div>
         </div>
     )
 };
 
-export default ShelterOpp;
+export default ShelterCard;

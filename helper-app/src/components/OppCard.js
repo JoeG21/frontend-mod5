@@ -60,7 +60,6 @@ class OppCard extends React.Component {
         let backCard = (
             <div className='opp-card' onClick={(this.clickedOppCard)}>
                 <h5>Would you like to volunteer?</h5>
-                {/* {console.log(this.props)} */}
                 <div className='options'>
                     <button onClick={() => this.handleYesClick(this.props.opp)}>Yes</button>    
                     <button>No</button>   

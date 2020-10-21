@@ -5,7 +5,7 @@ import Shelter from './Shelter'
 const ShelterList = (props) => {
 
     return (
-        <div className='side-bar'>
+        <div className='list-shelters'>
             {props.shelters.map(shelter => <Shelter key={shelter.id} shelter={shelter} selShelter={props.selShelter} />)}
         </div>
     )
