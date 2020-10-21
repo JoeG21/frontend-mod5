@@ -1,65 +1,161 @@
-/* .App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* App */
+.parent {
+  background-color: #d9d9d9e5;
+  font-family: 'Abhaya Libre', serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* Header */
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: #03989e;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+/* NavLinks */
+a {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #025658;
+}
+
+
+/* Welcome */
+.welcome-page {
   display: flex;
   flex-direction: column;
+  height: 950px;
+  min-width: 100%; 
+  min-height: 100%;
+} 
+
+.bio {
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  font-size: 30px;
+  color: rgb(75, 75, 75);
+  animation: bio-lists 1500ms ease-in;
+}
+
+.bio-second {
+  margin-left: 10px;
+}
+
+.bio-third {
+  margin-left: 20px;
+}
+
+@keyframes bio-lists {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+}
+
+
+/* MainContainer */
+.main-container {
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* border: 4px solid #03989e; */
+}
+
+.sidebar-com {
+  display: flex;
+  justify-content: left;
+}
+
+.selshelter-com {
+  margin-left: 25%;
+  /* flex:1; */
+  /* display: flex;
+  justify-content: center; */
+}
+
+
+/* SideBard */
+.side-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #adadade5;;
+  border: 4px solid #025658;
+  font-size: 10px;
+}
+/* ShelterList */
+.list-shelters {
+  /* display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around; */
+}
+/* Shelter */
+.shelter {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 45px;
+  border: 1px solid #ffffff;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .card-img {
+  width: 100px;
+  height: 50px;
 } */
 
+/* OppCard */
 .opp-card {
+  /* border: 1px solid #9e9e9e;
+  border-radius: 8px;
+  width: 285px;
+  margin: auto; */
   margin: 10px;
   height: 200px;
   width: 200px;
   padding: 10px;
 
-  background: #b6b5b5;
+  background: rgb(241, 241, 241);
 }
 
-.shelter-opp {
-  margin: 10px;
-  height: 500px;
-  width: 500px;
-  padding: 10px;
 
-  background: #b6b5b5;
+/* ShelterCard */
+.shelter-card {
+  border: 1px solid #eceaea;
+  border-radius: 8px;
+  width: 300px;
+  margin: 50px;
+  left: 50%;
 }
 
+.card-img {
+  width: 100%;
+  border-radius: 7px 7px 0px 0px;
+}
+
+
+/* SelShelterOppsCard */
 .shelter-opp-opps {
-  margin: 10px;
-  height: 200px;
-  width: 200px;
-  padding: 10px;
-
+  border: 1px solid #9e9e9e;
+  border-radius: 8px;
+  width: 285px;
+  margin: auto;
   background: #dddddd;
 }
+
+
