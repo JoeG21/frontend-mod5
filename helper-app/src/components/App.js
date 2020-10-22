@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../styling/App.css';
+import '../styling/SideBar.css'
+import '../styling/Content.css'
 import Header from './Header';
 import MainContainer from './MainContainer';
 import Welcome from './Welcome';
@@ -21,7 +23,8 @@ class App extends Component {
 
   state = {
     isLoggedIn: false,
-    currentUser: ''
+    currentUser: '',
+    userOpps: []
   }
 
   componentDidMount(){
@@ -51,6 +54,12 @@ class App extends Component {
     })
   }
 
+  setUserOpps = (userOpps) => {
+    this.setState({
+      userOpps: [...this.state.userOpps, userOpps]
+    })
+  }
+
 
   render() {
     return (
@@ -61,7 +70,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={() => {
                 if(localStorage.getItem('auth_key')){
-                  return <MainContainer />
+                  return <MainContainer setUserOpps={this.setUserOpps} />
                   // return <Route path='/homepage' component={OppContainer} />
                 }else{
                   return <Redirect to='/welcome' />
@@ -73,7 +82,7 @@ class App extends Component {
               </Route >
               
               <Route path="/login" component={() => {
-                return <Login currentUser={this.currentUser} failedLogin={this.failedLogin} handleLogin={this.handleLogin} />
+                return <Login currentUser={this.currentUser} failedLogin={this.failedLogin} handleLogin={this.handleLogin} setUserOpps={this.setUserOpps} />
               }} />
 
               <Route path='/signup' component={SignUp} />
@@ -87,7 +96,7 @@ class App extends Component {
 
 
               <Route path='/userpage' component={ () => {
-                return <UserProfile user={this.state.currentUser} />
+                return <UserProfile user={this.state.currentUser} userOpps={this.state.userOpps} />
               }} />
               
               
