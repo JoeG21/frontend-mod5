@@ -1,5 +1,5 @@
 import React from 'react';
-import OppList from './OppList'
+import OppsList from './OppsList'
 import ShelterCard from './ShelterCard'
 
 const Content = (props) => {
@@ -13,7 +13,7 @@ const Content = (props) => {
                 selShelter={props.selShelter} selShelterOpps={props.selShelterOpps} />
               
             : 
-                <OppList opps={props.opps} />
+                <OppsList opps={props.opps} setUserOpps={props.setUserOpps} />
         }
       </div>
     );

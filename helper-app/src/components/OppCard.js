@@ -15,6 +15,9 @@ class OppCard extends React.Component {
     }
 
     handleYesClick = (opp) => {
+        this.props.setUserOpps(opp)
+
+
         fetch('http://localhost:3000/user_opps',{
         method: 'POST',
         headers: {

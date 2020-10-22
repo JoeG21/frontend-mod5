@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SideBar from './SideBar'
 import Content from './Content'
 
-class OppContainer extends Component {
+class MainContainer extends Component {
 
     state = {
         opps: [],
@@ -58,14 +58,14 @@ class OppContainer extends Component {
         return (
             <div className='main-container'>
                 <div className='sidebar-com'>
-                <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
+                    <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
                 </div>
-                <div className='selshelter-com'>
-                <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps}/>
+                <div className='content-com'>
+                    <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps} setUserOpps={this.props.setUserOpps} />
                 </div>
             </div>
         )
     }
 }
 
-export default OppContainer
+export default MainContainer
