@@ -61,7 +61,7 @@ class MainContainer extends Component {
                     <SideBar shelters={this.state.shelters} selShelter={this.selShelter} />
                 </div>
                 <div className='content-com'>
-                    <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps} setUserOpps={this.props.setUserOpps} />
+                    <Content selShelter={this.state.selShelter} selShelterOpps={this.state.selShelterOpps} opps={this.state.opps} setUserOpps={this.props.setUserOpps} removeUserOpp={this.props.removeUserOpp} />
                 </div>
             </div>
         )

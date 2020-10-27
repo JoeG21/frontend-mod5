@@ -6,7 +6,7 @@ const OppsList = (props) => {
 
     return (
         <div className='opp-list'>
-            {props.opps.map(opp => <OppCard key={opp.id} opp={opp} setUserOpps={props.setUserOpps} />)}
+            {props.opps.map(opp => <OppCard key={opp.id} opp={opp} setUserOpps={props.setUserOpps} removeUserOpp={props.removeUserOpp} />)}
         </div>
     )
 }

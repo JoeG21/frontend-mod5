@@ -60,6 +60,14 @@ class App extends Component {
     })
   }
 
+  removeUserOpp = (selUserOpp) => {
+    if(this.state.userOpps.includes(selUserOpp)) {
+      this.setState({
+        userOpps: this.state.userOpps.filter((userOpp) => userOpp !== selUserOpp)
+      })
+    }
+  }
+
 
   render() {
     return (
@@ -70,7 +78,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={() => {
                 if(localStorage.getItem('auth_key')){
-                  return <MainContainer setUserOpps={this.setUserOpps} />
+                  return <MainContainer setUserOpps={this.setUserOpps} removeUserOpp={this.removeUserOpp} />
                   // return <Route path='/homepage' component={OppContainer} />
                 }else{
                   return <Redirect to='/welcome' />

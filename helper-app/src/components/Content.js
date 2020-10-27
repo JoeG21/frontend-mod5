@@ -13,7 +13,7 @@ const Content = (props) => {
                 selShelter={props.selShelter} selShelterOpps={props.selShelterOpps} />
               
             : 
-                <OppsList opps={props.opps} setUserOpps={props.setUserOpps} />
+                <OppsList opps={props.opps} setUserOpps={props.setUserOpps} removeUserOpp={props.removeUserOpp} />
         }
       </div>
     );

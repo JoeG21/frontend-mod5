@@ -4,7 +4,7 @@ import _Logo from '../_Logo.mp4'
 const Welcome = () => {
     return (
       <div className='welcome-page'>
-        <video autoPlay muted loop src={_Logo} type="video/mp4" />
+        <video autoPlay muted src={_Logo} type="video/mp4" />
         <div className='bio'>
           <p>
             Valath is a place where you can find nearby volunteering opportunities in the Houston area.

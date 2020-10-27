@@ -36,6 +36,12 @@ class OppCard extends React.Component {
 
     }
 
+    handleRemoveUserOpp = (opp) => {
+        console.log(opp)
+        // this.props.removeUserOpp(opp)
+    }
+
+
     render () {
       
         let frontCard = (
@@ -65,7 +71,7 @@ class OppCard extends React.Component {
                 <h5>Would you like to volunteer?</h5>
                 <div className='options'>
                     <button onClick={() => this.handleYesClick(this.props.opp)}>Yes</button>    
-                    <button>No</button>   
+                    <button onClick={() => this.handleRemoveUserOpp(this.props.opp)}>No</button>   
                 </div>
             </div>
         )
